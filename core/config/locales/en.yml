@@ -1075,6 +1075,8 @@ en:
     billing: Billing
     billing_address: Billing Address
     both: Both
+    brand: Brand
+    brands: Brands
     calculated_reimbursements: Calculated Reimbursements
     calculator: Calculator
     calculator_settings_warning: If you are changing the calculator type or preference source, you must save first before you can edit the calculator settings
@@ -1516,6 +1518,7 @@ en:
     end: End
     ending_in: Ending in
     error: error
+    error_user_destroy_with_orders: Cannot delete a user with orders
     errors:
       messages:
         cannot_delete_finalized_stock_location: Stock Location cannot be destroyed if you have open stock transfers.
