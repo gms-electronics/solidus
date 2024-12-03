@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-store = Spree::Store.where(code: 'sample-store').first
-
 taxonomies = [
-  { name: "Categories", store: },
-  { name: "Brands", store: }
+  { name: "Categories" },
+  { name: "Brand" }
 ]
 
 taxonomies.each do |taxonomy_attrs|
