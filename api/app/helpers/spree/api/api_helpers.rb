@@ -37,10 +37,32 @@ module Spree
         :variant_property_attributes
       ]
 
+      METADATA_MODELS = {
+        order: Spree::Order,
+        customer_return: Spree::CustomerReturn,
+        payment: Spree::Payment,
+        return_authorization: Spree::ReturnAuthorization,
+        shipment: Spree::Shipment,
+        stock_location: Spree::StockLocation,
+        stock_movement: Spree::StockMovement,
+        user: Spree::LegacyUser,
+        line_item: Spree::LineItem
+      }
+
       ATTRIBUTES.each do |attribute|
         define_method attribute do
           Spree::Api::Config.send(attribute)
         end
+      end
+
+      METADATA_MODELS.each do |method_name, resource|
+        define_method("#{method_name}_attributes") do
+          authorized_attributes(resource, "#{method_name}_attributes")
+        end
+      end
+
+      def authorized_attributes(resource, config_attribute)
+        can?(:admin, resource) ? Spree::Api::Config.public_send(config_attribute) + [:admin_metadata] : Spree::Api::Config.public_send(config_attribute)
       end
 
       def required_fields_for(model)
