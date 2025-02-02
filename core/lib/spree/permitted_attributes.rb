@@ -113,7 +113,8 @@ module Spree
     @@store_attributes = [:name, :url, :seo_title, :meta_keywords,
                           :meta_description, :default_currency,
                           :mail_from_address, :cart_tax_country_iso,
-                          :bcc_email]
+                          :bcc_email, :code, :legal_name, :tax_id, :address,
+                          :contact_phone, :contact_email, :vat_id, :description]
 
     @@taxonomy_attributes = [:name]
 

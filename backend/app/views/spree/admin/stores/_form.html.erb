@@ -30,7 +30,32 @@
       <%= f.text_area :meta_description, class: 'fullwidth' %>
       <%= f.error_message_on :meta_description %>
     <% end %>
+
+    <%= f.field_container :legal_name do %>
+      <%= f.label :legal_name %>
+      <%= f.text_field :legal_name, class: 'fullwidth' %>
+      <%= f.error_message_on :legal_name %>
+    <% end %>
+
+    <%= f.field_container :tax_id do %>
+      <%= f.label :tax_id %>
+      <%= f.text_field :tax_id, class: 'fullwidth' %>
+      <%= f.error_message_on :tax_id %>
+    <% end %>
+
+    <%= f.field_container :address do %>
+      <%= f.label :address %>
+      <%= f.text_area :address, class: 'fullwidth' %>
+      <%= f.error_message_on :address %>
+    <% end %>
+
+    <%= f.field_container :contact_phone do %>
+      <%= f.label :contact_phone %>
+      <%= f.phone_field :contact_phone, class: 'fullwidth' %>
+      <%= f.error_message_on :contact_phone %>
+    <% end %>
   </div>
+
   <div class="col-12 col-md-6">
     <%= f.field_container :url do %>
       <%= f.label :url, class: 'required' %>
@@ -46,7 +71,7 @@
 
     <%= f.field_container :bcc_email do %>
       <%= f.label :bcc_email %>
-      <%= f.text_field :bcc_email, class: 'fullwidth' %>
+      <%= f.email_field :bcc_email, class: 'fullwidth' %>
       <%= f.error_message_on :bcc_email %>
     <% end %>
 
@@ -80,6 +105,24 @@
         { },
         { class: 'select2 fullwidth', multiple: true } %>
       <%= f.error_message_on :default_currency %>
+    <% end %>
+
+    <%= f.field_container :contact_email do %>
+      <%= f.label :contact_email %>
+      <%= f.email_field :contact_email, class: 'fullwidth' %>
+      <%= f.error_message_on :contact_email %>
+    <% end %>
+
+    <%= f.field_container :vat_id do %>
+      <%= f.label :vat_id %>
+      <%= f.text_field :vat_id, class: 'fullwidth' %>
+      <%= f.error_message_on :vat_id %>
+    <% end %>
+
+    <%= f.field_container :description do %>
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'fullwidth' %>
+      <%= f.error_message_on :description %>
     <% end %>
   </div>
 </div>
