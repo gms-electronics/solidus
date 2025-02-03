@@ -37,7 +37,14 @@ module Spree::Api
             "default_currency" => nil,
             "code" => store.code,
             "default" => true,
-            "available_locales" => ["en"]
+            "available_locales" => ["en"],
+            "legal_name": nil,
+            "tax_id": nil,
+            "contact_phone": nil,
+            "contact_email": nil,
+            "vat_id": nil,
+            "description": nil,
+            "address": nil
           },
           {
             "id" => non_default_store.id,
@@ -51,7 +58,14 @@ module Spree::Api
             "default_currency" => nil,
             "code" => non_default_store.code,
             "default" => false,
-            "available_locales" => ["en"]
+            "available_locales" => ["en"],
+            "legal_name": nil,
+            "tax_id": nil,
+            "contact_phone": nil,
+            "contact_email": nil,
+            "vat_id": nil,
+            "description": nil,
+            "address": nil
           }
         ])
       end
@@ -70,7 +84,14 @@ module Spree::Api
           "default_currency" => nil,
           "code" => store.code,
           "default" => true,
-          "available_locales" => ["en"]
+          "available_locales" => ["en"],
+          "legal_name" => nil,
+          "tax_id" => nil,
+          "contact_phone" => nil,
+          "contact_email" => nil,
+          "vat_id" => nil,
+          "description" => nil,
+          "address" => nil
         )
       end
 

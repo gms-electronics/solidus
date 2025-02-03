@@ -43,17 +43,18 @@
       <%= f.error_message_on :tax_id %>
     <% end %>
 
-    <%= f.field_container :address do %>
-      <%= f.label :address %>
-      <%= f.text_area :address, class: 'fullwidth' %>
-      <%= f.error_message_on :address %>
-    <% end %>
-
     <%= f.field_container :contact_phone do %>
       <%= f.label :contact_phone %>
       <%= f.phone_field :contact_phone, class: 'fullwidth' %>
       <%= f.error_message_on :contact_phone %>
     <% end %>
+
+    <%= f.field_container :vat_id do %>
+      <%= f.label :vat_id %>
+      <%= f.text_field :vat_id, class: 'fullwidth' %>
+      <%= f.error_message_on :vat_id %>
+    <% end %>
+
   </div>
 
   <div class="col-12 col-md-6">
@@ -65,7 +66,7 @@
 
     <%= f.field_container :mail_from_address do %>
       <%= f.label :mail_from_address, class: 'required' %>
-      <%= f.text_field :mail_from_address, required: true, class: 'fullwidth' %>
+      <%= f.email_field :mail_from_address, required: true, class: 'fullwidth' %>
       <%= f.error_message_on :mail_from_address %>
     <% end %>
 
@@ -113,16 +114,42 @@
       <%= f.error_message_on :contact_email %>
     <% end %>
 
-    <%= f.field_container :vat_id do %>
-      <%= f.label :vat_id %>
-      <%= f.text_field :vat_id, class: 'fullwidth' %>
-      <%= f.error_message_on :vat_id %>
-    <% end %>
-
     <%= f.field_container :description do %>
       <%= f.label :description %>
-      <%= f.text_area :description, class: 'fullwidth' %>
+      <%= f.text_area :description, class: 'fullwidth', style: 'height: 130px;' %>
       <%= f.error_message_on :description %>
     <% end %>
+  </div>
+
+  <div class="col-12">
+    <%= f.label :address, "Address" %>
+    <div class="row border mx-1 py-3 border-secondary rounded">
+      <div class="col-md-6 mb-3">
+        <%= f.label :streetAddress, "Street Address", class: "form-label" %>
+        <%= text_field_tag 'store[address][streetAddress]', f.object.address&.dig('streetAddress'), class: 'form-control', placeholder: "Street Address" %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= f.label :addressLocality, "City", class: "form-label" %>
+        <%= text_field_tag 'store[address][addressLocality]', f.object.address&.dig('addressLocality'), class: 'form-control', placeholder: "City" %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= f.label :addressRegion, "Region", class: "form-label" %>
+        <%= text_field_tag 'store[address][addressRegion]', f.object.address&.dig('addressRegion'), class: 'form-control', placeholder: "Region" %>
+      </div>
+
+      <div class="mb-3 col-md-6">
+        <%= f.label :addressCountry, "Country", class: "form-label" %>
+        <%= select_tag 'store[address][addressCountry]',
+              options_from_collection_for_select(available_countries(restrict_to_zone: nil), :id, :name, f.object.address&.dig('addressCountry')),
+              class: 'form-control', placeholder: "Country" %>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <%= f.label :postalCode, "Postal Code", class: "form-label" %>
+        <%= text_field_tag 'store[address][postalCode]', f.object.address&.dig('postalCode'), class: 'form-control', placeholder: "Postal Code" %>
+      </div>
+    </div>
   </div>
 </div>

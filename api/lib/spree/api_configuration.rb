@@ -127,7 +127,8 @@ module Spree
     preference :store_attributes, :array, default: [
       :id, :name, :url, :meta_description, :meta_keywords, :seo_title,
       :mail_from_address, :default_currency, :code, :default, :available_locales,
-      :bcc_email
+      :bcc_email, :code, :legal_name, :tax_id, :contact_phone,
+      :contact_email, :vat_id, :description, :address
     ]
 
     preference :store_credit_history_attributes, :array, default: [
