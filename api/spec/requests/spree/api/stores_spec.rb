@@ -38,13 +38,19 @@ module Spree::Api
             "code" => store.code,
             "default" => true,
             "available_locales" => ["en"],
-            "legal_name": nil,
-            "tax_id": nil,
-            "contact_phone": nil,
-            "contact_email": nil,
-            "vat_id": nil,
-            "description": nil,
-            "address": nil
+            "legal_name" => nil,
+            "contact_phone" => nil,
+            "contact_email" => nil,
+            "description" => nil,
+            "tax_id" => nil,
+            "vat_id" => nil,
+            "address1" => nil,
+            "address2" => nil,
+            "city" => nil,
+            "postal_code" => nil,
+            "country_id" => nil,
+            "state_id" => nil,
+            "state_name" => nil
           },
           {
             "id" => non_default_store.id,
@@ -59,13 +65,19 @@ module Spree::Api
             "code" => non_default_store.code,
             "default" => false,
             "available_locales" => ["en"],
-            "legal_name": nil,
-            "tax_id": nil,
-            "contact_phone": nil,
-            "contact_email": nil,
-            "vat_id": nil,
-            "description": nil,
-            "address": nil
+            "legal_name" => nil,
+            "contact_phone" => nil,
+            "contact_email" => nil,
+            "description" => nil,
+            "tax_id" => nil,
+            "vat_id" => nil,
+            "address1" => nil,
+            "address2" => nil,
+            "city" => nil,
+            "postal_code" => nil,
+            "country_id" => nil,
+            "state_id" => nil,
+            "state_name" => nil
           }
         ])
       end
@@ -86,12 +98,18 @@ module Spree::Api
           "default" => true,
           "available_locales" => ["en"],
           "legal_name" => nil,
-          "tax_id" => nil,
           "contact_phone" => nil,
           "contact_email" => nil,
-          "vat_id" => nil,
           "description" => nil,
-          "address" => nil
+          "tax_id" => nil,
+          "vat_id" => nil,
+          "address1" => nil,
+          "address2" => nil,
+          "city" => nil,
+          "postal_code" => nil,
+          "country_id" => nil,
+          "state_id" => nil,
+          "state_name" => nil
         )
       end
 
