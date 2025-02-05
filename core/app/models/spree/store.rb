@@ -15,6 +15,9 @@ module Spree
     has_many :store_shipping_methods, inverse_of: :store
     has_many :shipping_methods, through: :store_shipping_methods
 
+    belongs_to :state, class_name: 'Spree::State', optional: true
+    belongs_to :country, class_name: 'Spree::Country', optional: true
+
     has_many :orders, class_name: "Spree::Order"
 
     validates :code, presence: true, uniqueness: { allow_blank: true, case_sensitive: true }
