@@ -166,11 +166,13 @@ en:
         variant: Variant
       spree/product:
         available_on: Available On
+        condition: Master Condition
         cost_currency: Cost Currency
         cost_price: Cost Price
         depth: Depth
         description: Description
         discontinue_on: Discontinue on
+        gtin: Master GTIN
         height: Height
         master_price: Master Price
         meta_description: Meta Description
@@ -416,9 +418,11 @@ en:
         password_confirmation: Password Confirmation
         spree_roles: Roles
       spree/variant:
+        condition: Condition
         cost_currency: Cost Currency
         cost_price: Cost Price
         depth: Depth
+        gtin: GTIN
         height: Height
         price: Price
         shipping_category: Variant Shipping Category
@@ -1585,7 +1589,6 @@ en:
     general: General
     google_analytics: Google Analytics
     google_analytics_id: Analytics ID
-    gtin: GTIN
     guest_checkout: Guest Checkout
     guest_user_account: Checkout as a Guest
     has_no_shipped_units: has no shipped units
