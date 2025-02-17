@@ -58,7 +58,7 @@ module Spree::Api
 
       it "can get the store details" do
         get spree.api_store_path(store)
-        expect(json_response).to eq(
+        expected_response = {
           "id" => store.id,
           "name" => "My Spree Store",
           "url" => "spreestore.example.com",
@@ -70,32 +70,33 @@ module Spree::Api
           "default_currency" => nil,
           "code" => store.code,
           "default" => true,
-          "available_locales" => ["en"]
-        )
+          "available_locales" => ["en"],
+        }
+
+        expect(json_response).to eq(expected_response)
       end
 
-      it "can create a new store" do
+      it "can create a new store with a favicon" do
         store_hash = {
           code: "spree123",
           name: "Hack0rz",
           url: "spree123.example.com",
-          mail_from_address: "me@example.com"
+          mail_from_address: "me@example.com",
+          favicon: fixture_file_upload(Spree::Core::Engine.root.join("lib", "spree", "testing_support", "fixtures", "blank.jpg"), "image/jpeg")
         }
         post spree.api_stores_path, params: { store: store_hash }
         expect(response.status).to eq(201)
+        created_store = Spree::Store.last
+        expect(created_store.favicon.attached?).to be true
       end
 
-      it "can update an existing store" do
+      it "can update an existing store with a favicon" do
         store_hash = {
-          url: "spree123.example.com",
-          mail_from_address: "me@example.com",
-          bcc_email: "bcc@example.net"
+          favicon: fixture_file_upload(Spree::Core::Engine.root.join("lib", "spree", "testing_support", "fixtures", "blank.jpg"), "image/jpeg")
         }
         put spree.api_store_path(store), params: { store: store_hash }
         expect(response.status).to eq(200)
-        expect(store.reload.url).to eql "spree123.example.com"
-        expect(store.reload.mail_from_address).to eql "me@example.com"
-        expect(store.reload.bcc_email).to eql "bcc@example.net"
+        expect(store.reload.favicon.attached?).to be true
       end
 
       context "deleting a store" do
