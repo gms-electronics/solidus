@@ -168,6 +168,13 @@ module Spree
     #   @return [String] template to use for layout on the frontend (default: +"spree/layouts/spree_application"+)
     preference :layout, :string, default: 'spree/layouts/spree_application'
 
+    # !@attribute [rw] line_item_comparison_hooks
+    #   @return [Array<Symbol>] An array of methods to call on {Spree::Order} to determine if a line item is equal to another
+    #   (default: +[]+)
+    #   @example
+    #   config.line_item_comparison_hooks << :my_custom_method
+    preference :line_item_comparison_hooks, :array, default: []
+
     # @!attribute [rw] logo
     #   @return [String] URL of logo used on frontend (default: +'logo/solidus.svg'+)
     preference :logo, :string, default: 'logo/solidus.svg'
@@ -208,6 +215,27 @@ module Spree
     # @!attribute [rw] orders_per_page
     #   @return [Integer] Orders to show per-page in the admin (default: +15+)
     preference :orders_per_page, :integer, default: 15
+
+    # @!attribute [rw] meta_data_validation_enabled
+    #   @return [Boolean] Indicates whether validation for customer and admin metadata columns is enabled.
+    #   When this is set to true, the following preferences will be used to validate the metadata:
+    #   - The maximum number of keys that can be added to the metadata columns (meta_data_max_keys).
+    #   - The maximum length of each key in the metadata columns (meta_data_max_key_length).
+    #   - The maximum length of each value in the metadata columns (meta_data_max_value_length).
+    #   (default: +true+)
+    preference :meta_data_validation_enabled, :boolean, default: false
+
+    # @!attribute [rw] meta_data_max_keys
+    #   @return [Integer] Maximum keys that can be allocated in customer and admin metadata column (default: +6+)
+    preference :meta_data_max_keys, :integer, default: 6
+
+    # @!attribute [rw] meta_data_max_key_length
+    #   @return [Integer] Maximum length that key can have in customer and admin metadata column (default: +16+)
+    preference :meta_data_max_key_length, :integer, default: 16
+
+    # @!attribute [rw] meta_data_max_value_length
+    #   @return [Integer] Maximum length that value can have in customer and admin metadata column (default: +256+)
+    preference :meta_data_max_value_length, :integer, default: 256
 
     # @!attribute [rw] properties_per_page
     #   @return [Integer] Properties to show per-page in the admin (default: +15+)
@@ -429,6 +457,13 @@ module Spree
     # @return [Class] a class with the same public interfaces
     #   as Spree::Wallet::AddPaymentSourcesToWallet.
     class_name_attribute :add_payment_sources_to_wallet_class, default: 'Spree::Wallet::AddPaymentSourcesToWallet'
+
+    # Allows providing your own class for recalculating totals on an item.
+    #
+    # @!attribute [rw] item_total_class
+    # @return [Class] a class with the same public interfaces as
+    #   Spree::ItemTotal
+    class_name_attribute :item_total_class, default: 'Spree::ItemTotal'
 
     # Allows providing your own class for calculating taxes on an order.
     #

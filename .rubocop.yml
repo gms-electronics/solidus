@@ -113,6 +113,10 @@ Style/TrailingCommaInHashLiteral:
 Style/SymbolArray:
   Enabled: false
 
+# In some circumstances, this looks really unintuitive
+Rails/Delegate:
+  Enabled: false
+
 Rails/DynamicFindBy:
   Whitelist:
     - find_by_param
@@ -134,6 +138,7 @@ Lint/AmbiguousBlockAssociation:
   Exclude:
     - "*/spec/**/*"
     - "spec/**/*" # For the benefit of apps that inherit from this config
+    - "**/shared_examples/**/*"
 
 # We use eval to add common_spree_dependencies into the Gemfiles of each of our gems
 Security/Eval:
