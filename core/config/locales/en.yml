@@ -646,6 +646,9 @@ en:
       spree/price:
         one: Price
         other: Prices
+      spree/price_list:
+        one: Price List
+        other: Price Lists
       spree/product:
         one: Product
         other: Products
@@ -948,6 +951,8 @@ en:
         orders: Orders
         overview: Overview
         payments: Payments
+        price_list: Price List
+        price_lists: Price Lists
         products: Products
         properties: Property Types
         rma: RMA
@@ -1787,6 +1792,7 @@ en:
     new_order_completed: New Order Completed
     new_payment: New Payment
     new_payment_method: New Payment Method
+    new_price_list: New Price List
     new_product: New Product
     new_property: New Property Type
     new_refund: New Refund
