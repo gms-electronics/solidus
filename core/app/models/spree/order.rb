@@ -330,6 +330,7 @@ module Spree
       end
 
       assign_attributes(attrs_to_set)
+      recalculate_line_item_prices
     end
 
     def generate_order_number
@@ -888,6 +889,10 @@ module Spree
         random_token = SecureRandom.urlsafe_base64(nil, false)
         break random_token unless self.class.exists?(guest_token: random_token)
       end
+    end
+
+    def recalculate_line_item_prices
+      line_items.each(&:recalculate_price)
     end
   end
 end
